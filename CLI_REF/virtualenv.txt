@@ -1,0 +1,26 @@
+# 설치 cli
+pip3 install virtualenv virtualenvwrapper
+# 가상환경 생성 / 삭제
+mkvirtualenv --python=python[version] [가상환경이름]
+mkvirtualenv [가상환경이름] -p [python-path]
+rmvirtualenv [가상환경이름]
+
+set CONDA_FORCE 32BIT=1
+conda create --name Creon-Datareader python=3.6
+
+# 가상환경 리스트확인 / 접속
+workon
+workon [가상환경이름]
+# 가상환경 벗어나기
+deactivate
+== 아래는 아직 사용할 줄 모름 ==
+# 디렉토리와 가상환경 매핑
+setvirtualenvproject
+프로젝트 디렉토리로 이동 후, 해당 커맨드를 치면 디렉토리와 가상환경이 맵핑된다. 그러면 workon커맨드를 치는것 만으로 해당 디렉토리에 이동까지 시켜준다. 아주좋다.
+# 프로젝트 디렉토리로 이동
+cdproject
+setvirtualenvproject를 했을 경우, 현재 어디에 있든 해당 커맨드로 프로젝트 디렉토리에 이동이 가능하다.
+# 32bit 설치를 위해서는 32bit 파이썬 설치버젼이 있어야 함
+mkvirtualenv --python="C:\Python37-32\python.exe" Creon-Datareader
+# conda 이용한 가상환경 생성
+conda 

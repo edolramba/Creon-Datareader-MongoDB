@@ -13,7 +13,6 @@ def is_market_open():
     
     return True
 
-
 def available_latest_date():
     now = dt.datetime.now()
     mmhh = int('{}{:02}'.format(now.hour, now.minute))

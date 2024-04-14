@@ -1,4 +1,5 @@
-# Creon-Datareader
+# Creon-Datareader-MongoDB
+기존 Creon-Datareader 프로그램 (https://github.com/gyusu/Creon-Datareader.git) 의 DB 를 Sqlite 에서 MongoDB 로 변경했습니다. 
 대신증권의 HTS인 CREON의 Plus API를 사용하여 주가 데이터를 받아오는 PyQt 기반의 프로그램입니다.  
 가져온 데이터는 .db 파일로 저장되며, 지속적으로 데이터베이스에 Upsert할 수 있도록 구현되어있습니다.
 
@@ -29,15 +30,15 @@ CREON Plus가 32bit 환경에서 지원되기 때문에 32bit Python이 필요�
 
 - `set CONDA_FORCE_32BIT`을 이용하여 32-bit 가상환경을 만들어야 합니다.
     
-2. 32-bit anaconda `python=3.6` 가상환경에서
+2. 32-bit anaconda `python=3.7.9` 가상환경에서
 	`conda install`을 이용하여 `pyqt5`, `sqlite3`, `pandas`, `pywin32` 설치
     `conda install`이 안되는 모듈은 `pip`로 설치하시면 됩니다.
 
 ## 개발 환경
 OS: `WINDOW 10`
 
-Python: `Python3.6.4` in `Anaconda3(build version 3.4.1) 32bit`
-`pandas 0.22.0` `pyqt: 5.6.0` `pywin32: 222` `sqlite: 3.22.0`
+Python: `Python3.7.9 (32bit)`
+`colorama==0.4.6 dnspython==2.3.0 ImportConfig==0.0.4 numpy==1.21.6 pandas==1.3.5 pymongo==4.6.3 PyQt5==5.15.10 PyQt5-Qt5==5.15.2 PyQt5-sip==12.13.0 python-dateutil==2.9.0.post0 pytz==2024.1 pywin32==306 PyYAML==6.0.1 six==1.16.0 tqdm==4.66.2 MongoDB=4.3`
 
 ## NOTE
 1. 일봉에 대해, ohlcv_only 체크 해제 시 아래 항목들을 추가로 받아옵니다.

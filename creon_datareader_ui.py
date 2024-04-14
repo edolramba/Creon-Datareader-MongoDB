@@ -98,9 +98,13 @@ class Ui_MainWindow(object):
         self.checkBox.setGeometry(QtCore.QRect(540, 60, 116, 22))
         self.checkBox.setChecked(True)
         self.checkBox.setObjectName("checkBox")
+        
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser.setGeometry(QtCore.QRect(870, 29, 291, 801))
         self.textBrowser.setObjectName("textBrowser")
+        # HTML 파일에서 내용을 읽어와 QTextBrowser에 설정
+        self.loadHtmlContent()
+        
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1175, 31))
@@ -113,6 +117,17 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def loadHtmlContent(self):
+        # HTML 파일 경로
+        html_file_path = "C:\\Dev\\Creon-Datareader\\contents\\instructions.html"
+        
+        try:
+            with open(html_file_path, 'r', encoding='utf-8') as file:
+                html_content = file.read()
+                self.textBrowser.setHtml(html_content)
+        except Exception as e:
+            print(f"Error loading HTML file: {e}")
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Creon_datareader v1.2"))
@@ -124,7 +139,8 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "검색 결과만\n"
 "다운로드"))
         self.label_9.setText(_translate("MainWindow", "DB 경로"))
-        self.lineEdit_4.setText(_translate("MainWindow", "./db/stock_price(5min).db"))
+        # self.lineEdit_4.setText(_translate("MainWindow", "./db/stock_price(5min).db"))
+        self.lineEdit_4.setText(_translate("MainWindow", "stock_price(1min)"))
         self.lineEdit_5.setPlaceholderText(_translate("MainWindow", "종목코드 or 종목명"))
         self.label_12.setText(_translate("MainWindow", "종목 필터"))
         self.pushButton_2.setText(_translate("MainWindow", "연결"))
@@ -137,32 +153,6 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(3, _translate("MainWindow", "주봉"))
         self.comboBox.setItemText(4, _translate("MainWindow", "월봉"))
         self.checkBox.setText(_translate("MainWindow", "ohlcv only"))
-        self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Gulim\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">### 사용법 ###</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">step 0. Creon Plus에 로그인되어 있어야 함!</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">step 1. DB 경로 입력 후 [연결] 버튼 클릭</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    - db 파일이 새 파일인 경우 분봉/일봉 선택 가능</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    - 기존에 사용하던 파일인 경우, 기존 데이터에 맞게 자동 선택됨</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">step 2. 다운로드</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    case A. 전체 종목(코스피 + 코스닥) 다운로드.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">         - [전체 다운로드] 클릭</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    case B. 종목 검색하여 다운로드.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">         - [종목 필터] 검색창에 종목코드/명 입력 후 [Enter]</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">         - [검색 결과만 다운로드] 클릭</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">    case C. 미리 생성해놓은 \'종목리스트\'에 대해 다운로드.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">         - 종목리스트 경로 입력 후 [연결] 버튼 클릭</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">         - [검색 결과만 다운로드] 클릭</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-
 
 if __name__ == "__main__":
     import sys
